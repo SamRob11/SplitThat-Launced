@@ -19,7 +19,7 @@ if raw_user_input:
 
     for i in names_list: #individual_payments is the list of payments for one name
         st.markdown("<br>", unsafe_allow_html=True)
-        individual_payments = st.text_input(f"Enter {i}'s payments, separated by <span style='color:indianred'>commas</span> :", unsafe_allow_html=True) #i is eah name in this case
+        individual_payments = st.text_input(f"Enter {i}'s payments, separated by commas :") #i is eah name in this case
         
         if individual_payments:
             Payments_dictionary[i] = [float(p.strip()) for p in individual_payments.split(",") if p.strip()]
