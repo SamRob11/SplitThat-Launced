@@ -4,7 +4,7 @@ import numpy as np
 
 
 st.title("Split That")
-st.text("<i>An easy way to split costs between friends</i>", unsafe_allow_html=True)
+st.markdown("<i>An easy way to split costs between friends</i>", unsafe_allow_html=True)
 st.markdown("Please input the names of group members below, separated by <span style='color:indianred'>commas</span> :", unsafe_allow_html=True)
 raw_user_input = st.text_input(" ")
 
