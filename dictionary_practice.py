@@ -22,8 +22,22 @@ if raw_user_input:
         individual_payments = st.text_input(f"Enter {i}'s payments (one or more), separated by commas :") #i is eah name in this case
         
         if individual_payments:
-            Payments_dictionary[i] = [float(p.strip()) for p in individual_payments.split(",") if p.strip()]
-            vector_with_avgs.append(sum(Payments_dictionary[i])/numpeeps)
+            clean_payments = []
+            for p in individual_payments.split(","):
+                p = p.strip()
+                if not p:
+                    continue
+                try:
+                    clean_payments.append(float(p))
+                except ValueError:
+                    st.warning(f"⚠️ Skipping invalid entry: '{p}'")
+
+            Payments_dictionary[i] = clean_payments
+            vector_with_avgs.append(sum(clean_payments) / numpeeps)
+            
+            # Payments_dictionary[i] = [float(p.strip()) for p in individual_payments.split(",") if p.strip()] #first strips extra spaces, then creates that list, then strips the list of spaces as their own part of the list
+            # vector_with_avgs.append(sum(Payments_dictionary[i])/numpeeps)
+
    
     if len(vector_with_avgs) == numpeeps:
         Everyone_pays = (sum(vector_with_avgs))
