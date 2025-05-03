@@ -46,7 +46,7 @@ if raw_user_input:
 
         # checkbox toggle for simplifying payments
         st.markdown('Check the box to show <i><span style="color:indianred;">net</span></i> payments', unsafe_allow_html=True)
-        show_simplified = st.checkbox(" ", key="simplified_toggle", help="Toggle to see net amounts between people")
+        show_simplified = st.checkbox(" ", key="simplified_toggle")
         if show_simplified:
             for j in range(len(owes_matrix)):
                 st.markdown(f"<h4 style='margin-top: 2em'>{names_list[j]} Pays</h4>", unsafe_allow_html=True)
