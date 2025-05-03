@@ -53,7 +53,7 @@ if raw_user_input:
                 st.markdown(f"<h4 style='margin-top: 2em'>{names_list[j]} Pays</h4>", unsafe_allow_html=True)
                 payment = False
                 
-                for i in range(len(individual_vector)):
+                for i in range(len(owes_matrix)):
                     if i != j:
                         net_payment = owes_matrix[i, j] - owes_matrix[j, i]
                         if net_payment > 0:
