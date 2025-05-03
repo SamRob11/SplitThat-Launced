@@ -45,7 +45,7 @@ if raw_user_input:
             owes_matrix[i_index,i_index] = 0 
 
         # checkbox toggle for simplifying payments
-        show_simplified = st.checkbox("Show simplified (net) payments", help="Only show net owed amounts between people"):
+        show_simplified = st.checkbox("Show simplified (net) payments", help="Only show net owed amounts between people")
         if show_simplified:
             st.markdown("<hr><h3>Simplified Payments</h3>", unsafe_allow_html=True)
             
