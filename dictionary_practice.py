@@ -63,9 +63,10 @@ if raw_user_input:
                 
                 for i in range(len(individual_vector)):
                     if i != j:
-                        if owes_matrix[i, j] - owes_matrix[j, i] > 0:
+                        net_payment = owes_matrix[i, j] - owes_matrix[j, i]
+                        if net_payment > 0:
                             st.write(f"<span style='color:lightgreen;'>${net_payment:.2f}</span> to <b>{names_list[i]}</b>", unsafe_allow_html=True)
-                            paid_anyone = True
+                            payment = True
         
                 if not payment:
                     st.write("Pays nothing")
