@@ -45,7 +45,12 @@ if raw_user_input:
             owes_matrix[i_index,i_index] = 0 
 
         # checkbox toggle for simplifying payments
-        show_simplified = st.checkbox('Show <i><span style="color:indianred;">SIMPLIFIED</span></i> (net) payments',help="Toggle to see net amounts between people")
+        col1, col2 = st.columns([1, 10])  # column width ratio, this is for putting the markdown text and checkbox next to each other
+        with col1:
+            show_simplified = st.checkbox(" ", key="simplified_toggle", help="Toggle to see net amounts between people")
+        with col2:
+            st.markdown('Show <i><span style="color:indianred;">simplified</span></i> (net) payments', unsafe_allow_html=True)
+        # beginning of if else statement if the checkbox is clicked or not 
         if show_simplified:
             for j in range(len(owes_matrix)):
                 st.markdown(f"<h4 style='margin-top: 2em'>{names_list[j]} Pays</h4>", unsafe_allow_html=True)
