@@ -45,10 +45,8 @@ if raw_user_input:
             owes_matrix[i_index,i_index] = 0 
 
         # checkbox toggle for simplifying payments
-        show_simplified = st.checkbox("Show simplified (net) payments", help="Only show net owed amounts between people")
+        show_simplified = st.checkbox('Show <i><span style="color:indianred;">SIMPLIFIED</span></i> (net) payments',help="Toggle to see net amounts between people"
         if show_simplified:
-            st.markdown("<hr><h3>Simplified Payments</h3>", unsafe_allow_html=True)
-            
             for j in range(len(owes_matrix)):
                 st.markdown(f"<h4 style='margin-top: 2em'>{names_list[j]} Pays</h4>", unsafe_allow_html=True)
                 payment = False
@@ -61,7 +59,7 @@ if raw_user_input:
                             payment = True
         
                 if not payment:
-                    st.write("Pays nothing")
+                    st.write("<span style='color:lightgreen;'>Nothing</span>", unsafe_allow_html=True")
 
         else:
         #printing out final numbers
