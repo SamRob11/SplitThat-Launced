@@ -44,17 +44,9 @@ if raw_user_input:
             owes_matrix[i_index,:] = vector_with_avgs[i_index] 
             owes_matrix[i_index,i_index] = 0 
 
-        #printing out final numbers
-        for j in range(len(owes_matrix)):
-            individual_vector = owes_matrix[j,:]
-            #the list () below makes the dictionary a list with the keys being able to be indexes now
-            st.markdown(f"<h4 style='margin-top: 2em'>{list(Payments_dictionary.keys())[j]} Pays</h4>", unsafe_allow_html=True)
-            for i in range(len(individual_vector)):
-                if j != i: #skipping outputting the "sara pays sara $0" if sara has a 0 vector
-                    st.write(f"<span style='color:lightgreen;'>${owes_matrix[i,j]:.2f}</span> to <b>{list(Payments_dictionary.keys())[i]}</b>",unsafe_allow_html=True)
-
         # checkbox toggle for simplifying payments
-        if st.checkbox("Show simplified (net) payments", help="Only show net owed amounts between people"):
+        show_simplified = st.checkbox("Show simplified (net) payments", help="Only show net owed amounts between people"):
+        if show_simplified:
             st.markdown("<hr><h3>Simplified Payments</h3>", unsafe_allow_html=True)
             
             for j in range(len(owes_matrix)):
@@ -70,3 +62,14 @@ if raw_user_input:
         
                 if not payment:
                     st.write("Pays nothing")
+
+        else:
+        #printing out final numbers
+            for j in range(len(owes_matrix)):
+                individual_vector = owes_matrix[j,:]
+                #the list () below makes the dictionary a list with the keys being able to be indexes now
+                st.markdown(f"<h4 style='margin-top: 2em'>{list(Payments_dictionary.keys())[j]} Pays</h4>", unsafe_allow_html=True)
+                for i in range(len(individual_vector)):
+                    if j != i: #skipping outputting the "sara pays sara $0" if sara has a 0 vector
+                        st.write(f"<span style='color:lightgreen;'>${owes_matrix[i,j]:.2f}</span> to <b>{list(Payments_dictionary.keys())[i]}</b>",unsafe_allow_html=True)
+    
