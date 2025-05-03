@@ -7,7 +7,7 @@ st.markdown("Please input the names of group members below, separated by <span s
 raw_user_input = st.text_input(" ")
 
 if raw_user_input:
-    names_list = [name.strip() for name in raw_user_input.split(",") if name.strip()]
+    names_list = [name.strip().capitalize() for name in raw_user_input.split(",") if name.strip()]
     #st.write("People in the group:", names_list)
     # uncomment above to see the list of names
     
