@@ -59,7 +59,7 @@ if raw_user_input:
                             payment = True
         
                 if not payment:
-                    st.write("<span style='color:lightgreen;'>Nothing</span>", unsafe_allow_html=True")
+                    st.write("<span style='color:lightgreen;'>Nothing</span>", unsafe_allow_html=True)
 
         else:
         #printing out final numbers
