@@ -52,3 +52,20 @@ if raw_user_input:
             for i in range(len(individual_vector)):
                 if j != i: #skipping outputting the "sara pays sara $0" if sara has a 0 vector
                     st.write(f"<span style='color:lightgreen;'>${owes_matrix[i,j]:.2f}</span> to <b>{list(Payments_dictionary.keys())[i]}</b>",unsafe_allow_html=True)
+
+        # checkbox toggle for simplifying payments
+        if st.checkbox("Show simplified (net) payments", help="Only show net owed amounts between people"):
+            st.markdown("<hr><h3>Simplified Payments</h3>", unsafe_allow_html=True)
+            
+            for j in range(len(owes_matrix)):
+                st.markdown(f"<h4 style='margin-top: 2em'>{names_list[j]} Pays</h4>", unsafe_allow_html=True)
+                payment = False
+                
+                for i in range(len(individual_vector)):
+                    if i != j:
+                        if owes_matrix[i, j] - owes_matrix[j, i] > 0:
+                            st.write(f"<span style='color:lightgreen;'>${net_payment:.2f}</span> to <b>{names_list[i]}</b>", unsafe_allow_html=True)
+                            paid_anyone = True
+        
+                if not payment:
+                    st.write("Pays nothing")
